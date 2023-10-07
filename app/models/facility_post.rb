@@ -1,0 +1,2 @@
+class FacilityPost < ApplicationRecord
+end
