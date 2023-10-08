@@ -8,7 +8,7 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
   
-  GUEST_USER_EMAIL = "guest@123.com"
+  GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
