@@ -1,0 +1,28 @@
+<div class="container">
+ <h2>エリア一覧・追加</h2>
+    <div class="row mt-5">
+      <%= form_with model: @area, url: admin_areas_path,method: :post do |f| %>
+      <span>エリア名</span>
+      <%= f.text_field :name,placeholder: "エリア名" %>
+      <%= f.submit '新規登録', class: "btn btn-success", style: "border-radius: 8px;" %>
+      <% end %>
+    </div>
+
+    <div class="col-md-3 mt-5">
+      <table class= "table">
+        <thead>
+          <tr>
+            <th colspan="2">エリア</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @areas.each do |area| %>
+            <tr>
+              <td class="pt-3"><%= area.name %></td>
+              <td><%= link_to "編集する", edit_admin_area_path(area.id), class: "btn btn-success", style: "border-radius: 6px;" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
