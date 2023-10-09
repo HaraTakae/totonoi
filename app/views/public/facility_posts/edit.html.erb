@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h2>投稿編集</h2>
+    </div>
+
+    <!--編集エラーメッセージ-->
+  <% if @facility_post.errors.any? %>
+  <%= @facility_post.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @facility_post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-12 px-sm-0 mx-auto mb-5">
+      <%= form_with model: @facility_post, url: facility_posts_path, local: true do |f| %>
+      <table>
+        <tr>
+          <div class="form-group">
+            <th>施設画像</th>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th>エリア</th>
+            <td><%= f.collection_select :area_id, Area.all, :id, :name, :prompt => "--選択してください--" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th>施設住所</th>
+            <td><%= f.text_field :address, placeholder:"施設住所" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th>施設名</th>
+            <td><%= f.text_field :name, placeholder:"施設名" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-group">
+            <th>施設説明</th>
+            <td><%= f.text_area :introduction, size: "50x5", placeholder:"ここに説明文を記述します" %></td>
+          </div>
+        </tr>
+        <tr>
+          <div class="form-action">
+            <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
+          </div>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>

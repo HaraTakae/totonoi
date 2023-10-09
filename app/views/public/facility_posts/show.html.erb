@@ -1,0 +1,29 @@
+<div class="container rounded p-3 mt-4 custom-border">
+
+  <div class="row">
+    <div class="col-sm-10 offset-sm-1">
+      <h2 class="text-center">投稿詳細</h2>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-6 col-md-6 text-center">
+      <%= image_tag @facility_post.image, size: "250x150", class: "img-fluid" %>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <h4 class="font-noto">エリア</h4>
+      <p class="font-noto"><%= @facility_post.area.name %></p>
+      
+      <h4 class="font-noto">住所</h4>
+      <p class="font-noto"><%= @facility_post.address %></p>
+      
+      <h4 class="font-noto">施設名</h4>
+      <p class="font-noto"><%= @facility_post.name %></p>
+
+      <h4class="font-noto">施設説明</h4>
+      <pclass="font-noto"><%= simple_format(@facility_post.introduction) %></p>
+
+      <p><%= link_to '編集する', edit_facility_post_path(@facility_post), class: "btn btn-custom" %></p>
+    </div>
+  </div>
+</div>
