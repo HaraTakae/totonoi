@@ -13,6 +13,9 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"; 
 
+// jQueryの記述（５段階評価））
+window.$ = window.jQuery = require('jquery');
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
