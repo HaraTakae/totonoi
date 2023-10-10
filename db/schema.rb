@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2023_10_07_050434) do
     t.string "name", null: false
     t.string "address", null: false
     t.text "introduction", null: false
-    t.integer "star", null: false
+    t.string "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_facility_posts_on_name"

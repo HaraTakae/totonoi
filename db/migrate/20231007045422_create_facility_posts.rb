@@ -6,7 +6,7 @@ class CreateFacilityPosts < ActiveRecord::Migration[6.1]
       t.string:name, null: false, index: true
       t.string:address, null: false
       t.text:introduction, null: false
-      t.integer:star, null: false
+      t.string:star, null: false
       t.timestamps
     end
   end
