@@ -1,1 +1,24 @@
-<h1>totonoi</h1>
+<div class="jumbotron text-center">
+  <div class="">
+    <div class="mx-auto py-5 col-11 col-sm-10 col-lg-8 col-xl-6 text-left">
+      <h2>サウナ情報を</br>
+      　　投稿しよう</h2>
+      <p class="hero__btn__wrapper">
+        <% if user_signed_in? %>
+          <%= render partial: 'login_user' %>
+        <% else %>
+          <%= render partial: 'no_login_user' %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .jumbotron {
+    background-image: url('/assets/sauna.top.jpg');
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+  }
+</style>
