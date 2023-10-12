@@ -1,9 +1,19 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+ <div class='row'>
+   <div class='col-md-3'>
+    <h2>マイページ</h2>
+      <table class='table'>
+        <tr>
+          <th>ニックネーム</th>
+          <th><%= @user.name %></th>
+        </tr>
+      </table>
 
-
-<% unless @user.guest_user? %>
-<div class="row">
-  <%= link_to "",edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
+    <% unless @user.guest_user? %>
+      <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    <% end %>
+   </div>
+ </div>
 </div>
-<% end %>
