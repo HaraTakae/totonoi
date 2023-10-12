@@ -51,7 +51,28 @@
         </tr>
         <tr>
           <div class="form-group">
-            <td><%= render 'form', facility_posts: @facility_posts %></td>
+            <div class="form-group" id="star">
+      <strong><%= f.label :評価 %></strong>
+      <%= f.hidden_field :star, id: :review_star, class: "form-control" %>
+      <div id="post_raty"></div>
+      
+          <script>
+        var elem = document.querySelector('#post_raty');
+
+        elem.innerHTML = ""
+        let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'facility_post[star]',
+        };
+        raty(elem, opt);
+    </script>
+      
+      
+      
+    </div>
+            <td><%= render 'form', facility_post: @facility_post %></td>
           </div>
         </tr>
         <tr>

@@ -23,8 +23,23 @@
       <h4class="font-noto">施設説明</h4>
       <pclass="font-noto"><%= simple_format(@facility_post.introduction) %></p>
       
-      <%= render 'form', facility_post: FacilityPost.new %>
-      <%= render "star", facility_post: @facility_post %>
+      <!--<%#= render 'form', facility_post: FacilityPost.new %>-->
+      <!--<%#= render "star", facility_post: @facility_post %>-->
+      <div id="star_<%= @facility_post.id %>"></div>
+<script>
+  let elem = document.querySelector('#star_<%= @facility_post.id %>');
+
+  elem.innerHTML = "";
+  let opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= @facility_post.star %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+</script>
+
 
       <p><%= link_to '編集する', edit_facility_post_path(@facility_post), class: "btn btn-success" %></p>
       <p><%= link_to '削除する', facility_post_path(@facility_post), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></p>

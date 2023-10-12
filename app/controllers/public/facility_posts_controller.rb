@@ -9,7 +9,9 @@ class Public::FacilityPostsController < ApplicationController
   
   def create
     @facility_post = FacilityPost.new(facility_post_params)
-    if @facility_post.save
+    
+    if @facility_post.save!
+      #binding.pry
       flash[:notice] = "新規投稿しました。"
       redirect_to facility_post_path(@facility_post.id)
     else
