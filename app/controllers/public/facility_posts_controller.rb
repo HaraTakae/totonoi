@@ -39,6 +39,13 @@ class Public::FacilityPostsController < ApplicationController
     end
   end
   
+  def destroy
+    @facility_post = FacilityPost.find(params[:id])
+    @facility_post.destroy
+    flash[:success] = "選択いただいた投稿を削除しました"
+    redirect_to facility_posts_path
+  end
+  
   private
   def facility_post_params
     params.require(:facility_post).permit(:image, :name, :introduction, :area_id, :star, :address).merge(user_id:current_user.id)

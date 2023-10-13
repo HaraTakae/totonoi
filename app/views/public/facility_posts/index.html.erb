@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="row">
+
+    <!--ジャンル検索左側-->
+    <!--<div class="col-md-3">-->
+      <%#= render partial: 'genre_search', locals: { genres: @genres } %>
+    <!--  <%#= render 'public/genres/genre_search', genres: @genres, genre_id: @genre_id %>-->
+    <!--</div>-->
+
+    <!--投稿一覧-->
+   <div class="col-md-8 offset-md-1">
+      <h2 class="mb-5"><%#= @index %>一覧(全<%= @facility_posts.count %>件)</h2>
+      <div class="row">
+        <% @facility_posts.each do |facility_post| %>
+          <div class="col-12 col-md-6 col-lg-4 mb-2">
+            <%= link_to facility_post_path(facility_post) do %>
+              <div class="card">
+                <div class="card-body product-image text-center" style="height: 200px; overflow: hidden;">
+                  <%= image_tag facility_post.image, class: "img-fluid w-100 h-100" %> <!-- img-fluidクラスとw-100クラス、h-100クラスを追加 -->
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title" style="color: black;">施設名</h4>
+                  <p class="card-text" style="color: black;"><%= facility_post.name %></p>
+                  <p class="card-text" style="color: black;">
+                    <i class="fa-solid fa-location-dot"></i> <%= facility_post.area.name %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
