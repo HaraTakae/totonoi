@@ -1,6 +1,7 @@
 class Public::FacilityPostsController < ApplicationController
   def index
     @facility_posts = FacilityPost.all
+    @areas = Area.all
   end
 
   def new

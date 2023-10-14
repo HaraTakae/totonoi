@@ -1,14 +1,13 @@
 <div class="container mt-5">
   <div class="row">
 
-    <!--ジャンル検索左側-->
-    <!--<div class="col-md-3">-->
-      <%#= render partial: 'genre_search', locals: { genres: @genres } %>
-    <!--  <%#= render 'public/genres/genre_search', genres: @genres, genre_id: @genre_id %>-->
-    <!--</div>-->
+    <!--エリア検索左側-->
+    <div class="sidebar col-4">
+      <%= render "public/areas/area", areas: @areas %>
+    </div>
 
     <!--投稿一覧-->
-   <div class="col-md-8 offset-md-1">
+    <div class="col-md-8">
       <h2 class="mb-5">一覧(全<%= @facility_posts.count %>件)</h2>
       <div class="row">
         <% @facility_posts.each do |facility_post| %>
