@@ -1,0 +1,19 @@
+<div class="col-8 mx-auto">
+  <table class="table table-borderless">
+    <tr class="text-center">
+      <td class="table-danger">Areas</td>
+    </tr>
+    <% @areas.each do |area| %>
+      <tr class="text-center">
+        <td><%= link_to area.name, area_path(area),class: "text-dark" %> </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<style>
+  .table-danger {
+  background-color: #DEB887; /* 薄い茶色 */
+  color: #000; /* テキストの色を黒に変更 */
+</style>

@@ -21,5 +21,7 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
   
+  has_many :facility_posts
+  
   validates :name, presence: true
 end

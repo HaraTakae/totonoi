@@ -2,9 +2,14 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   def show
     @user = current_user
+    # ユーザーが投稿した施設情報を読み込む
+    @facility_posts = @user.facility_posts
+    # 関連するコメントも読み込む
+    @comments = Comment.where(facility_post: @facility_posts)
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def confirm_withdrawal
@@ -13,7 +18,21 @@ class Public::UsersController < ApplicationController
   def new
   end
   
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+      flash[:notice] = "名前を変更しました。"
+    else
+      render :edit
+    end
+  end
+  
   private
+  
+  def user_params
+    params.require(:user).permit(:name)
+  end
   
   def ensure_guest_user
     @user = User.find(params[:id])

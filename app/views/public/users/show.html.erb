@@ -1,21 +1,53 @@
 <div class='container px-5 px-sm-0'>
- <div class='row'>
-   <div class='col-md-3'>
-    <h2>マイページ</h2>
-      <table class='table'>
-        <tr>
-          <th>ニックネーム</th>
-          <th><%= @user.name %></th>
-        </tr>
-      </table>
+  <div class='row'>
+    <div class="sidebar col-md-3">
+      <h2>マイページ</h2>
+        <table class='table'>
+          <tr>
+            <th>ニックネーム</th>
+            <th><%= @user.name %></th>
+          </tr>
+        </table>
 
-    <% unless @user.guest_user? %>
-      <% if @user == current_user %>
-        <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-          <i class="fas fa-user-cog"></i>
+      <% unless @user.guest_user? %>
+        <% if @user == current_user %>
+          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-   </div>
- </div>
+    </div>
+     
+    <div class="col-md-8 px-sm-0 offset-md-1 mt-3 mb-4">
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>施設名</th>
+            <th><i class="fa-solid fa-location-dot"></i>エリア</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @facility_posts.each do |facility_post| %>
+            <tr>
+              <td><%= link_to facility_post.name,facility_post %></td>
+              <td><%= facility_post.area.name%></td>
+              <td>コメント数: <%= facility_post.comments.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <h4 class="font-noto">コメント一覧</h4>
+      <% @comments.each do |comment| %>
+        <%= link_to user_path(comment.user) do %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <p class="font-noto" style="color: black;"><strong><%= comment.user.name%>:</strong> <%= comment.comment %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

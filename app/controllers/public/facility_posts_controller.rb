@@ -43,8 +43,8 @@ class Public::FacilityPostsController < ApplicationController
   def destroy
     @facility_post = FacilityPost.find(params[:id])
     @facility_post.destroy
-    flash[:success] = "選択いただいた投稿を削除しました"
-    redirect_to facility_posts_path
+    flash[:notice] = "選択いただいた投稿を削除しました"
+    redirect_to user_path(current_user)
   end
   
   private
