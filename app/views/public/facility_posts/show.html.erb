@@ -42,9 +42,10 @@
           raty(elem, opt);
         </script>
 
-
-      <p><%= link_to '編集する', edit_facility_post_path(@facility_post), class: "btn btn-success" %></p>
-      <p><%= link_to '削除する', facility_post_path(@facility_post), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></p>
+      <% if @facility_post.user == current_user %>
+        <p><%= link_to '編集する', edit_facility_post_path(@facility_post), class: "btn btn-success" %></p>
+        <p><%= link_to '削除する', facility_post_path(@facility_post), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></p>
+      <% end %>
     </div>
     
       
@@ -69,6 +70,9 @@
           <div class="card mb-2">
             <div class="card-body">
               <p class="font-noto" style="color: black;"><strong><%= comment.user.name%>:</strong> <%= comment.comment %></p>
+              <% if comment.user == current_user %>
+                <%= link_to "削除する", facility_post_comment_path(@facility_post, comment), method: :delete, data: { confirm: '削除しますか？' },  class: "btn btn-sm btn-danger float-end" %>
+              <% end %>
             </div>
           </div>
         <% end %>
