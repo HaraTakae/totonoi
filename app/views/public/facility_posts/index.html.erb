@@ -9,7 +9,7 @@
 
     <!--投稿一覧-->
    <div class="col-md-8 offset-md-1">
-      <h2 class="mb-5"><%#= @index %>一覧(全<%= @facility_posts.count %>件)</h2>
+      <h2 class="mb-5">一覧(全<%= @facility_posts.count %>件)</h2>
       <div class="row">
         <% @facility_posts.each do |facility_post| %>
           <div class="col-12 col-md-6 col-lg-4 mb-2">
@@ -19,10 +19,24 @@
                   <%= image_tag facility_post.image, class: "img-fluid w-100 h-100" %> <!-- img-fluidクラスとw-100クラス、h-100クラスを追加 -->
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title" style="color: black;">施設名</h4>
-                  <p class="card-text" style="color: black;"><%= facility_post.name %></p>
+                  <h4 class="card-text" style="color: black;"><%= facility_post.name %></h4>
                   <p class="card-text" style="color: black;">
                     <i class="fa-solid fa-location-dot"></i> <%= facility_post.area.name %></p>
+                    
+                  <p id="star_<%= facility_post.id %>"></p>
+                    <script>
+                      let elem = document.querySelector('#star_<%= facility_post.id %>');
+                    
+                      elem.innerHTML = "";
+                      let opt = {  
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        score: "<%= facility_post.star %>",
+                        readOnly: true,
+                      };
+                      raty(elem, opt);
+                    </script>
                 </div>
               </div>
             <% end %>

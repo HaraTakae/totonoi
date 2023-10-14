@@ -28,6 +28,21 @@
                   <h4 class="card-text" style="color: black;"><%= facility_post.name %></h4>
                   <p class="card-text" style="color: black;">
                     <i class="fa-solid fa-location-dot"></i> <%= facility_post.area.name %></p>
+                    
+                  <p id="star_<%= facility_post.id %>"></p>
+                    <script>
+                      let elem = document.querySelector('#star_<%= facility_post.id %>');
+                    
+                      elem.innerHTML = "";
+                      let opt = {  
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        score: "<%= facility_post.star %>",
+                        readOnly: true,
+                      };
+                      raty(elem, opt);
+                    </script>
                 </div>
               </div>
             <% end %>
