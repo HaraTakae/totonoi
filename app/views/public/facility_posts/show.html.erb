@@ -46,5 +46,33 @@
       <p><%= link_to '編集する', edit_facility_post_path(@facility_post), class: "btn btn-success" %></p>
       <p><%= link_to '削除する', facility_post_path(@facility_post), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></p>
     </div>
+    
+      
+      <h4 class="font-noto">コメント</h4>
+        <% if user_signed_in? %>
+          <%= form_for([@facility_post, @comment]) do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, size: "50x5", placeholder: "コメントを追加", class: "form-control" %>
+            </div>
+            <%= f.submit "コメントする", class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <p><%= link_to "コメントするにはログインしてください", new_user_session_path %></p>
+        <% end %>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h4 class="font-noto">コメント一覧</h4>
+      <% @facility_post.comments.each do |comment| %>
+        <%= link_to user_path(comment.user) do %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <p class="font-noto" style="color: black;"><strong><%= comment.user.name%>:</strong> <%= comment.comment %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

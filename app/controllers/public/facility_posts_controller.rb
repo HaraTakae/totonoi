@@ -22,6 +22,7 @@ class Public::FacilityPostsController < ApplicationController
 
   def show
     @facility_post = FacilityPost.find(params[:id])
+    @comment = Comment.new  # 空のコメントオブジェクトを作成
   end
 
   def edit

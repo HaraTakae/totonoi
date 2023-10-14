@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     
-  before_action :authenticate_user!, except: [:top], unless: :admin_signed_in?
+  before_action :authenticate_user!, except: [:top, :index, :show], unless: :admin_signed_in?
   before_action :authenticate_admin!, if: :admin_namespace?
 
   private
