@@ -1,1 +1,48 @@
-<h1>管理者トップページ</h1>
+<div class="container mt-5">
+  <div class="row">
+    <!--投稿一覧-->
+    <h2 class="mb-5">投稿一覧</h2>
+  </div>
+    
+  <div class="row">
+    <table class="table col-7 mx-auto">
+      <thead>
+        <tr>
+          <th>施設名</th>
+          <th>エリア</th>
+          <th>住所</th>
+          <th>施設説明</th>
+          <th>評価</th>
+        </tr>
+      </thead>
+      <% @facility_posts.each do |facility_post| %>
+      <tbody>
+        <tr>
+          <td class="align-items-center">
+            <%= link_to admin_facility_post_path(facility_post) do %>
+              <%= facility_post.name %>
+            <% end %>
+          </td>
+          <td class="align-items-center"><%= facility_post.area.name %></td>
+          <td class="align-items-center"><%= facility_post.address %></td>
+          <td class="align-items-center"><%= facility_post.introduction %></td>
+          <td id="star_<%= facility_post.id %>"></td>
+                <script>
+                  let elem = document.querySelector('#star_<%= facility_post.id %>');
+                
+                  elem.innerHTML = "";
+                  let opt = {  
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    score: "<%= facility_post.star %>",
+                    readOnly: true,
+                  };
+                  raty(elem, opt);
+                </script>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
