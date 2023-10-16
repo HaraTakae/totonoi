@@ -1,10 +1,7 @@
 class Admin::CommentsController < ApplicationController
-  def show
-  end
-
-  def index
-  end
-
-  def edit
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to request.referer
   end
 end

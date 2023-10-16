@@ -7,7 +7,10 @@ class Admin::FacilityPostsController < ApplicationController
     @facility_post = FacilityPost.find(params[:id])
   end
   
-  def edit
+  def destroy
     @facility_post = FacilityPost.find(params[:id])
+    @facility_post.destroy
+    flash[:notice] = "選択いただいた投稿を削除しました"
+    redirect_to admin_facility_posts_path
   end
 end

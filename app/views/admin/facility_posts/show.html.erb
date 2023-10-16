@@ -1,0 +1,67 @@
+<div class="container rounded p-3 mt-4 custom-border">
+
+  <div class="row">
+    <div class="col-sm-10 offset-sm-1">
+      <%= link_to admin_user_path(@facility_post.user) do %>
+        <p class="text-center" style="color: black;"><strong><%= @facility_post.user.name%>さん</strong></p>
+      <% end %>
+      <h2 class="text-center">投稿詳細</h2>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-6 col-md-6 text-center">
+      <%= image_tag @facility_post.image, size: "250x150", class: "img-fluid" %>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <h4 class="font-noto">エリア</h4>
+      <p class="font-noto"><%= @facility_post.area.name %></p>
+      
+      <h4 class="font-noto">住所</h4>
+      <p class="font-noto"><%= @facility_post.address %></p>
+      
+      <h4 class="font-noto">施設名</h4>
+      <p class="font-noto"><%= @facility_post.name %></p>
+
+      <h4 class="font-noto">施設説明</h4>
+      <p class="font-noto"><%= simple_format(@facility_post.introduction) %></p>
+      
+      <!--<%#= render 'form', facility_post: FacilityPost.new %>-->
+      <!--<%#= render "star", facility_post: @facility_post %>-->
+      
+      <h4 class="font-noto">評価</h4>
+      <div id="star_<%= @facility_post.id %>"></div>
+        <script>
+          let elem = document.querySelector('#star_<%= @facility_post.id %>');
+        
+          elem.innerHTML = "";
+          let opt = {  
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            score: "<%= @facility_post.star %>",
+            readOnly: true,
+          };
+          raty(elem, opt);
+        </script>
+
+      <p><%= link_to '削除する', admin_facility_post_path(@facility_post), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <h4 class="font-noto">コメント一覧</h4>
+      <% @facility_post.comments.each do |comment| %>
+        <%= link_to admin_user_path(comment.user) do %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <p class="font-noto" style="color: black;"><strong><%= comment.user.name%>:</strong> <%= comment.comment %></p>
+              <p><%= link_to "削除する", admin_facility_post_comment_path(@facility_post, comment), method: :delete, data: { confirm: '削除しますか？' },  class: "btn btn-sm btn-danger float-end" %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
