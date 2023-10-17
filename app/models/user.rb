@@ -23,5 +23,9 @@ class User < ApplicationRecord
   
   has_many :facility_posts
   
+  def post_count
+    facility_posts.count
+  end
+  
   validates :name, presence: true
 end
