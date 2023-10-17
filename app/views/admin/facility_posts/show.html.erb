@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-10 offset-sm-1">
       <%= link_to admin_user_path(@facility_post.user) do %>
-        <p class="text-center" style="color: black;"><strong><%= @facility_post.user.name%>さん</strong></p>
+        <p class="text-center" style="color: black;"><strong><%= @facility_post.user.name%>さんの投稿</strong></p>
       <% end %>
       <h2 class="text-center">投稿詳細</h2>
     </div>
@@ -26,9 +26,6 @@
       <h4 class="font-noto">施設説明</h4>
       <p class="font-noto"><%= simple_format(@facility_post.introduction) %></p>
       
-      <!--<%#= render 'form', facility_post: FacilityPost.new %>-->
-      <!--<%#= render "star", facility_post: @facility_post %>-->
-      
       <h4 class="font-noto">評価</h4>
       <div id="star_<%= @facility_post.id %>"></div>
         <script>
@@ -44,6 +41,8 @@
           };
           raty(elem, opt);
         </script>
+      <h4 class="font-noto">投稿日</h4>
+      <p class="font-noto"><%= @facility_post.created_at.strftime('%Y/%m/%d') %></p>
 
       <p><%= link_to '削除する', admin_facility_post_path(@facility_post), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></p>
     </div>

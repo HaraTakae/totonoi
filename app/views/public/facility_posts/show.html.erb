@@ -1,3 +1,4 @@
+<div style="background-color: #f2f2f2;">
 <div class="container rounded p-3 mt-4 custom-border">
 
   <div class="row">
@@ -41,6 +42,8 @@
           };
           raty(elem, opt);
         </script>
+      <h4 class="font-noto">投稿日</h4>
+      <p class="font-noto"><%= @facility_post.created_at.strftime('%Y/%m/%d') %></p>
 
       <% if @facility_post.user == current_user %>
         <p><%= link_to '編集する', edit_facility_post_path(@facility_post), class: "btn btn-success" %></p>
@@ -55,7 +58,7 @@
             <div class="form-group">
               <%= f.text_area :comment, size: "50x5", placeholder: "コメントを追加", class: "form-control" %>
             </div>
-            <%= f.submit "コメントする", class: "btn btn-primary" %>
+            <%= f.submit "コメントする", class: "btn btn-info" %>
           <% end %>
         <% else %>
           <p><%= link_to "コメントするにはログインしてください", new_user_session_path %></p>
@@ -79,4 +82,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>
