@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <div class="form-group">
-            <th>エリア</th>
+            <th><i class="fa-solid fa-location-dot"></i> エリア</th>
             <td><%= f.collection_select :area_id, Area.all, :id, :name, :prompt => "--選択してください--" %></td>
           </div>
         </tr>
@@ -76,7 +76,7 @@
         </tr>
         <tr>
           <div class="form-action">
-            <th><%= f.submit "新規登録", class: "btn btn-success" %></th>
+            <th><%= f.submit "新規登録", class: "btn btn-primary" %></th>
           </div>
         </tr>
       <% end %>
