@@ -14,8 +14,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    patch 'users/withdrawal' => "users#withdrawal"
-    get 'users/confirm_withdrawal' => "users#confirm_withdrawal"
     resources :users, only: [:show, :edit, :update]
     resources :facility_posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :update, :destroy]

@@ -1,0 +1,54 @@
+  <div class="container mt-5">
+    <div class="row">
+        
+      <div class="sidebar col-md-3">
+        <h2>マイページ</h2>
+          <table class='table'>
+            <tr>
+              <th>ニックネーム</th>
+              <th><%= @user.name %></th>
+            </tr>
+            <tr>
+              <th><%= link_to '退会させる', admin_user_path(@user), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></p></th>
+            </tr>
+          </table>
+      </div>
+        
+      <div class="main-content col-lg-9 col-md-8 col-sm-12"　style="background-color: #f2f2f2;">
+        <h4><%=@user.name %>さんの投稿一覧（全<%= @user.facility_posts.all.count %>件）</h4>
+        <div class="row row-cols-1 row-cols-lg-3 mx-auto">
+          <% @facility_posts.each do |facility_post| %>
+          <div class="col-12 col-md-6 col-lg-4 mb-2" >
+            <%= link_to admin_facility_post_path(facility_post) do %>
+              <div class="card">
+                <div class="card-body product-image text-center" style="height: 200px; overflow: hidden;">
+                  <%= image_tag facility_post.image, class: "img-fluid w-100 h-100" %> <!-- img-fluidクラスとw-100クラス、h-100クラスを追加 -->
+                </div>
+                <div class="card-body">
+                  <h4 class="card-text" style="color: black;"><%= facility_post.name %></h4>
+                  <p class="card-text" style="color: black;">
+                    <i class="fa-solid fa-location-dot"></i> <%= facility_post.area.name %></p>
+                    
+                  <p id="star_<%= facility_post.id %>"></p>
+                    <script>
+                      let elem = document.querySelector('#star_<%= facility_post.id %>');
+                    
+                      elem.innerHTML = "";
+                      let opt = {  
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        score: "<%= facility_post.star %>",
+                        readOnly: true,
+                      };
+                      raty(elem, opt);
+                    </script>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
