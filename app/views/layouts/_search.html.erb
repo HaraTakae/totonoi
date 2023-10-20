@@ -1,0 +1,11 @@
+<%= form_with url: search_path, class: "search_form w-45", method: :get do |f| %>
+  <%= f.text_field :word, class: "w-50", placeholder: "Search",autocomplete: "off" ,value: @word %>
+  <%= f.submit "検索", class: "table-danger" %>
+<% end %>
+
+
+<style>
+  .table-danger {
+  background-color: #DEB887; /* 薄い茶色 */
+  color: #000; /* テキストの色を黒に変更 */
+</style>
