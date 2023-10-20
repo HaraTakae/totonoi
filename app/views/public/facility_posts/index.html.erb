@@ -1,15 +1,15 @@
 <div style="background-color: #f2f2f2;">
-<div class="container mt-5">
+<div class="container">
   <div class="row">
 
     <!--エリア検索左側-->
-    <div class="sidebar col-4">
+    <div class="sidebar col-4 mt-5">
       <%= render "public/areas/area", areas: @areas %>
     </div>
 
     <!--投稿一覧-->
     <div class="col-md-8">
-      <h2 class="mb-5">一覧(全<%= @facility_posts.count %>件)</h2>
+      <h2 class="mb-5 mt-4">一覧(全<%= @facility_posts.count %>件)</h2>
       <div class="row">
         <% @facility_posts.each do |facility_post| %>
           <div class="col-12 col-md-6 col-lg-4 mb-2">
