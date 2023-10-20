@@ -28,10 +28,12 @@
       <!--<%#= render "star", facility_post: @facility_post %>-->
       
       <h4 class="font-noto">評価</h4>
-      <div id="star_<%= @facility_post.id %>"></div>
-        <script>
-          let elem = document.querySelector('#star_<%= @facility_post.id %>');
-        
+      <div id="star_show_<%= @facility_post.id %>"></div>
+      
+      <script>
+        document.addEventListener("turbolinks:load", function(){
+          let elem = document.querySelector('#star_show_<%= @facility_post.id %>');
+        console.log('...',elem)
           elem.innerHTML = "";
           let opt = {  
             starOn: "<%= asset_path('star-on.png') %>",
@@ -41,7 +43,9 @@
             readOnly: true,
           };
           raty(elem, opt);
-        </script>
+        })
+      </script>
+        
       <h4 class="font-noto">投稿日</h4>
       <p class="font-noto"><%= @facility_post.created_at.strftime('%Y/%m/%d') %></p>
 
