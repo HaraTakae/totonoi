@@ -1,5 +1,5 @@
 <%= form_with url: search_path, class: "search_form w-45", method: :get do |f| %>
-  <%= f.text_field :word, class: "w-50", placeholder: "Search",autocomplete: "off" ,value: @word %>
+  <%= f.text_field :word, class: "w-50", placeholder: "施設名",autocomplete: "off" ,value: @word %>
   <%= f.submit "検索", class: "table-danger" %>
 <% end %>
 

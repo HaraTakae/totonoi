@@ -91,7 +91,15 @@
         </div>
     </header>
     
+    <main>
     <%= flash[:notice] %>
     <%= yield %>
+    </main>
+    
+    <footer class="text-center border-top border-dark">
+      <div class="m-3">
+        <p>totonoi.</p>
+      </div>
+    </footer>
   </body>
 </html>
