@@ -1,5 +1,5 @@
 <div style="background-color: #f2f2f2;">
-<div class="container rounded p-3 mt-4 custom-border">
+<div class="container rounded p-3 custom-border">
 
   <div class="row">
     <div class="col-sm-10 offset-sm-1">
@@ -21,7 +21,7 @@
       <h4 class="font-noto">施設名</h4>
       <p class="font-noto"><%= @facility_post.name %></p>
 
-      <h4 class="font-noto">施設説明</h4>
+      <h4 class="font-noto">施設情報</h4>
       <p class="font-noto"><%= simple_format(@facility_post.introduction) %></p>
       
       <!--<%#= render 'form', facility_post: FacilityPost.new %>-->
@@ -31,7 +31,7 @@
       <div id="star_show_<%= @facility_post.id %>"></div>
       
       <script>
-        document.addEventListener("turbolinks:load", function(){
+        $(document).ready(function(){
           let elem = document.querySelector('#star_show_<%= @facility_post.id %>');
         console.log('...',elem)
           elem.innerHTML = "";

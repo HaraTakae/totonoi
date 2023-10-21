@@ -13,18 +13,20 @@
       <div class="row">
         <% @facility_posts.each do |facility_post| %>
           <div class="col-12 col-md-6 col-lg-4 mb-2">
-            <%= link_to facility_post_path(facility_post) do %>
-              <div class="card">
-                <div class="card-body product-image text-center" style="height: 200px; overflow: hidden;">
-                  <%= image_tag facility_post.image, class: "img-fluid w-100 h-100" %> <!-- img-fluidクラスとw-100クラス、h-100クラスを追加 -->
-                </div>
-                <div class="card-body">
+            <div class="card">
+              <div class="card-body product-image text-center" style="height: 200px; overflow: hidden;">
+                <%= image_tag facility_post.image, class: "img-fluid w-100 h-100" %> <!-- img-fluidクラスとw-100クラス、h-100クラスを追加 -->
+              </div>
+              <div class="card-body">
+                
+                <%= link_to facility_post_path(facility_post) do %>
                   <h4 class="card-text" style="color: black;"><%= facility_post.name %></h4>
                   <p class="card-text" style="color: black;">
                     <i class="fa-solid fa-location-dot"></i> <%= facility_post.area.name %></p>
-                    
-                  <p id="star_<%= facility_post.id %>"></p>
-                    <script>
+                <% end %>
+                <p id="star_<%= facility_post.id %>"></p>
+                  <script>
+                    $(document).ready(function() {
                       let elem = document.querySelector('#star_<%= facility_post.id %>');
                     
                       elem.innerHTML = "";
@@ -36,11 +38,11 @@
                         readOnly: true,
                       };
                       raty(elem, opt);
-                    </script>
-                  <p class="card-text" style="color: black;"><%= facility_post.created_at.strftime('%Y/%m/%d') %></p>
-                </div>
+                    });
+                  </script>
+                <p class="card-text" style="color: black;"><%= facility_post.created_at.strftime('%Y/%m/%d') %></p>
               </div>
-            <% end %>
+            </div>
           </div>
         <% end %>
       </div>

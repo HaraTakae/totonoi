@@ -31,17 +31,19 @@
                     
                   <p id="star_<%= facility_post.id %>"></p>
                     <script>
-                      let elem = document.querySelector('#star_<%= facility_post.id %>');
-                    
-                      elem.innerHTML = "";
-                      let opt = {  
-                        starOn: "<%= asset_path('star-on.png') %>",
-                        starOff: "<%= asset_path('star-off.png') %>",
-                        starHalf: "<%= asset_path('star-half.png') %>",
-                        score: "<%= facility_post.star %>",
-                        readOnly: true,
-                      };
-                      raty(elem, opt);
+                      $(document).ready(function() {
+                        let elem = document.querySelector('#star_<%= facility_post.id %>');
+                      
+                        elem.innerHTML = "";
+                        let opt = {  
+                          starOn: "<%= asset_path('star-on.png') %>",
+                          starOff: "<%= asset_path('star-off.png') %>",
+                          starHalf: "<%= asset_path('star-half.png') %>",
+                          score: "<%= facility_post.star %>",
+                          readOnly: true,
+                        };
+                        raty(elem, opt);
+                      });
                     </script>
                 </div>
               </div>

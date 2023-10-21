@@ -23,23 +23,25 @@
       <h4 class="font-noto">施設名</h4>
       <p class="font-noto"><%= @facility_post.name %></p>
 
-      <h4 class="font-noto">施設説明</h4>
+      <h4 class="font-noto">施設情報</h4>
       <p class="font-noto"><%= simple_format(@facility_post.introduction) %></p>
       
       <h4 class="font-noto">評価</h4>
       <div id="star_<%= @facility_post.id %>"></div>
         <script>
-          let elem = document.querySelector('#star_<%= @facility_post.id %>');
-        
-          elem.innerHTML = "";
-          let opt = {  
-            starOn: "<%= asset_path('star-on.png') %>",
-            starOff: "<%= asset_path('star-off.png') %>",
-            starHalf: "<%= asset_path('star-half.png') %>",
-            score: "<%= @facility_post.star %>",
-            readOnly: true,
-          };
-          raty(elem, opt);
+          $(document).ready(function() {
+            let elem = document.querySelector('#star_<%= @facility_post.id %>');
+          
+            elem.innerHTML = "";
+            let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              score: "<%= @facility_post.star %>",
+              readOnly: true,
+            };
+            raty(elem, opt);
+          });
         </script>
       <h4 class="font-noto">投稿日</h4>
       <p class="font-noto"><%= @facility_post.created_at.strftime('%Y/%m/%d') %></p>

@@ -27,19 +27,21 @@
           <td class="align-items-center"><%= facility_post.address %></td>
           <td class="align-items-center"><%= facility_post.introduction %></td>
           <td id="star_<%= facility_post.id %>"></td>
-                <script>
-                  let elem = document.querySelector('#star_<%= facility_post.id %>');
-                
-                  elem.innerHTML = "";
-                  let opt = {  
-                    starOn: "<%= asset_path('star-on.png') %>",
-                    starOff: "<%= asset_path('star-off.png') %>",
-                    starHalf: "<%= asset_path('star-half.png') %>",
-                    score: "<%= facility_post.star %>",
-                    readOnly: true,
-                  };
-                  raty(elem, opt);
-                </script>
+            <script>
+              $(document).ready(function() {
+                let elem = document.querySelector('#star_<%= facility_post.id %>');
+              
+                elem.innerHTML = "";
+                let opt = {  
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  score: "<%= facility_post.star %>",
+                  readOnly: true,
+                };
+                raty(elem, opt);
+              });
+            </script>
         </tr>
       </tbody>
       <% end %>
