@@ -50,6 +50,6 @@ class Public::FacilityPostsController < ApplicationController
   
   private
   def facility_post_params
-    params.require(:facility_post).permit(:images, :name, :introduction, :area_id, :star, :address).merge(user_id:current_user.id)
+    params.require(:facility_post).permit(:image, :name, :introduction, :area_id, :star, :address).merge(user_id:current_user.id)
   end
 end
