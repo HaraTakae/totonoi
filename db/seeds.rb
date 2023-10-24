@@ -10,5 +10,3 @@
 Admin.find_or_create_by!(email: ENV['ADMIN_USER']) do |admin|
   admin.password = ENV['ADMIN_PASSWORD']
 end
-
-
