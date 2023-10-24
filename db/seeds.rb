@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Adminのシードデータ
-Admin.find_or_create_by!(email: ENV['admin@123']) do |admin|
-  admin.password = ENV['123456']
+Admin.find_or_create_by!(email: ENV['ADMIN_USER']) do |admin|
+  admin.password = ENV['ADMIN_PASSWORD']
 end
 
 
