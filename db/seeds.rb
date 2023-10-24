@@ -5,4 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create!(email: 'admin@123', password: '123456')
+
+# Adminのシードデータ
+Admin.find_or_create_by!(email: ENV['admin@123']) do |admin|
+  admin.password = ENV['123456']
+end
+
+
