@@ -19,7 +19,15 @@
 サイトを見て訪れ、実際に施設を利用した後にレビューなどをする時。
 
 ## 設計書
-後ほど作成予定
+- ER図
+- https://app.diagrams.net/#G1irLfpIH_5kchRdHHDGM3Gx40nUlAS2L7
+- UI Flows(ユーザー)
+- https://app.diagrams.net/#G1irLfpIH_5kchRdHHDGM3Gx40nUlAS2L7#%7B%22pageId%22%3A%22OEdMCiyMOzPZHHPjX8Y1%22%7D
+- UI Flows(管理者)
+- https://app.diagrams.net/#G1irLfpIH_5kchRdHHDGM3Gx40nUlAS2L7#%7B%22pageId%22%3A%22zvzai0CDBbEDqkkIyrbE%22%7D
+- テーブル定義書
+- https://docs.google.com/spreadsheets/d/1cRICY_jeuYg145_JxNgT4SG_xC28deFKNfZPY5xiZTE/edit#gid=0
+
 
 ## 開発環境
 - OS：Linux(CentOS)
