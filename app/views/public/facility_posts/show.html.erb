@@ -9,8 +9,14 @@
 
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-6 col-md-6 text-center">
-      <%= image_tag @facility_post.image, size: "250x150", class: "img-fluid" %>
+      <%= image_tag @facility_post.image, size: "400x250", class: "img-fluid" %>
+      <div class="tag-box p-3">
+        <% @facility_post.tags.each do |tag| %>
+          <span class="label"><%= tag.name %></span>
+        <% end %>
+      </div>
     </div>
+    
     <div class="col-xs-12 col-sm-6 col-md-6">
       <h4 class="font-noto"><i class="fa-solid fa-location-dot"></i> エリア</h4>
       <p class="font-noto"><%= @facility_post.area.name %></p>
@@ -88,3 +94,16 @@
   </div>
 </div>
 </div>
+
+
+
+<style>
+ .label {
+  background-color: #008080;
+  font-weight: 500;
+  padding: .2em .6em .3em;
+  font-size: 85%;
+  color: #fff;
+  border-radius: .25em;
+}
+</style>

@@ -10,8 +10,11 @@ class Public::FacilityPostsController < ApplicationController
   
   def create
     @facility_post = FacilityPost.new(facility_post_params)
-    
+    tags = Vision.get_image_data(facility_post_params[:image])
     if @facility_post.save
+      tags.each do |tag|
+        @facility_post.tags.create(name: tag)
+      end
       #binding.pry
       flash[:notice] = "新規投稿しました。"
       redirect_to facility_post_path(@facility_post.id)
