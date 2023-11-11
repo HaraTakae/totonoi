@@ -21,7 +21,8 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
   
-  has_many :facility_posts
+  has_many :facility_posts,dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   def post_count
     facility_posts.count

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     resources :facility_posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :update, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :areas, only: [:show]
   end

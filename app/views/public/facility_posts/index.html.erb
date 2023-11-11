@@ -3,7 +3,7 @@
   <div class="row">
 
     <!--エリア検索左側-->
-    <div class="sidebar col-4 mt-5">
+    <div class="sidebar col-3 mt-5">
       <%= render "public/areas/area", areas: @areas %>
     </div>
 
@@ -12,7 +12,7 @@
       <h2 class="mb-5 mt-4">一覧(全<%= @facility_posts.count %>件)</h2>
       <div class="row">
         <% @facility_posts.each do |facility_post| %>
-          <div class="col-12 col-md-6 col-lg-4 mb-2">
+          <div class="col-12 col-lg-4">
             <div class="card">
               <div class="card-body product-image text-center" style="height: 200px; overflow: hidden;">
                 <%= image_tag facility_post.image, class: "img-fluid w-100 h-100" %> <!-- img-fluidクラスとw-100クラス、h-100クラスを追加 -->
@@ -24,6 +24,7 @@
                   <p class="card-text" style="color: black;">
                     <i class="fa-solid fa-location-dot"></i> <%= facility_post.area.name %></p>
                 <% end %>
+                
                 <p id="star_<%= facility_post.id %>"></p>
                   <script>
                     $(document).ready(function() {
@@ -41,6 +42,7 @@
                     });
                   </script>
                 <p class="card-text" style="color: black;"><%= facility_post.created_at.strftime('%Y/%m/%d') %></p>
+                <p class="card-text"><%= render "public/favorites/btn", facility_post: facility_post %></p>
               </div>
             </div>
           </div>

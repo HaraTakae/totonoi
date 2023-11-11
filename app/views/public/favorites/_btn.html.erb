@@ -1,0 +1,11 @@
+<% if facility_post.favorited_by?(current_user) %>
+  <%= link_to facility_post_favorites_path(facility_post), method: :delete do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+  <% end %>
+    <%= facility_post.favorites.count %> いいね
+<% else %>
+  <%= link_to facility_post_favorites_path(facility_post), method: :post do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+  <% end %>
+    <%= facility_post.favorites.count %> いいね
+<% end %>
