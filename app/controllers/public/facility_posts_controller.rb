@@ -15,7 +15,6 @@ class Public::FacilityPostsController < ApplicationController
       tags.each do |tag|
         @facility_post.tags.create(name: tag)
       end
-      #binding.pry
       flash[:notice] = "新規投稿しました。"
       redirect_to facility_post_path(@facility_post.id)
     else
