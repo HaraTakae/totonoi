@@ -1,5 +1,11 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
+  
+  # いいね一覧
+  def index
+    @favorites = Favorite.all
+  end
+  
   def show
     @user = current_user
     # ユーザーが投稿した施設情報を読み込む

@@ -1,0 +1,52 @@
+<div style="background-color: #f2f2f2;">
+  <div class="container">
+    <div class="row">
+        
+      <div class="main-content col-lg-9 col-md-8 col-sm-12 mt-4 mx-auto">
+        <% if @favorites.present? %>
+          <h4><i class="fas fa-heart"></i>いいね（全<%= @favorites.count %>件）</h4>
+          <div class="row row-cols-1 row-cols-lg-3 mx-auto">
+            <% @favorites.each do |favorite| %>
+            <% facility_post = favorite.facility_post %>
+              <div class="col-12 col-md-6 col-lg-4 mb-2">
+                <%= link_to facility_post_path(facility_post.id) do %>
+                  <div class="card">
+                    <div class="card-body product-image text-center" style="height: 200px; overflow: hidden;">
+                      <%= image_tag facility_post.image, class: "img-fluid w-100 h-100" %>
+                    </div>
+                    <div class="card-body">
+                      <h4 class="card-text" style="color: black;"><%= facility_post.name %></h4>
+                      <p class="card-text" style="color: black;">
+                        <i class="fa-solid fa-location-dot"></i> <%= facility_post.area.name %>
+                      </p>
+                      <p id="star_<%= facility_post.id %>"></p>
+                        <script>
+                          $(document).ready(function() {
+                            let elem = document.querySelector('#star_<%= facility_post.id %>');
+                            elem.innerHTML = "";
+                            let opt = {
+                              starOn: "<%= asset_path('star-on.png') %>",
+                              starOff: "<%= asset_path('star-off.png') %>",
+                              starHalf: "<%= asset_path('star-half.png') %>",
+                              score: "<%= facility_post.star %>",
+                              readOnly: true,
+                            };
+                            raty(elem, opt);
+                          });
+                        </script>
+                      <p class="card-text" style="color: black;"><%= facility_post.created_at.strftime('%Y/%m/%d') %></p>
+                      <p class="card-text"><%= render "public/favorites/btn", facility_post: facility_post %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <!-- いいねが空の場合の処理 -->
+          <p>いいねした投稿はまだありません。気になった投稿をいいねしてみましょう‼</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

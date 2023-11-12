@@ -1,6 +1,5 @@
 class Public::FavoritesController < ApplicationController
   
-  
   def create
     facility_post = FacilityPost.find(params[:facility_post_id])
     favorite = current_user.favorites.new(facility_post_id: facility_post.id)
