@@ -8,10 +8,17 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = current_user
+
+  if @user
     # ユーザーが投稿した施設情報を読み込む
     @facility_posts = @user.facility_posts
     # 関連するコメントも読み込む
     @comments = Comment.where(facility_post: @facility_posts)
+  else
+  # @userがnilの場合の処理を追加
+  # 例えば、ログインしていない場合に新規登録ページにリダイレクトする
+    redirect_to new_user_registration_path, alert: 'ログインしてください'
+  end
   end
 
   def edit

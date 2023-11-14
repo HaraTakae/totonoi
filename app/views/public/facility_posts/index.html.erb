@@ -42,7 +42,10 @@
                     });
                   </script>
                 <p class="card-text" style="color: black;"><%= facility_post.created_at.strftime('%Y/%m/%d') %></p>
-                <p class="card-text"><%= render "public/favorites/btn", facility_post: facility_post %></p>
+                
+                <% if user_signed_in? %>
+                  <p class="card-text"><%= render "public/favorites/btn", facility_post: facility_post %></p>
+                <% end %>
               </div>
             </div>
           </div>
